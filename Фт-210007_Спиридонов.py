@@ -26,8 +26,8 @@ for i in range(len(crit_name_list)):
             continue
         else:
             while True:
-                crit = float(input('Введите криетерий попарного сравнения {}/{} (не более единицы): '.format(crit_name_list[i], crit_name_list[m])))
-                if crit > 1:
+                crit = float(input('Введите криетерий попарного сравнения {}/{}: '.format(crit_name_list[i], crit_name_list[m])))
+                if crit < 0:
                     print('Введите корректное значение!')
                     continue
                 else:
@@ -48,7 +48,7 @@ for i in range(len(lamd)):
     kf[crit_name_list[i]] = round(lamd[i] / s_lamd, 2)
     correct_kf.append(round(lamd[i] / s_lamd, 2))
 
-# Проверка на сумму весовых кф, с последующим выводом
+# Проверка на сумму весовых кф с последующим выводом
 if sum(correct_kf) == 1:
     print('Введенные значения корректны')
     for i in kf:
