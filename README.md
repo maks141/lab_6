@@ -7,6 +7,7 @@
 
 ### Рассмотрим работу программы на реальных примерах
 #### Тест 1
-![image](https://user-images.githubusercontent.com/53860694/196975865-b6d030f4-6c64-4589-9746-b651186ed9cc.png)
+![image](https://user-images.githubusercontent.com/53860694/197185293-cc010096-c09a-48ae-a5d8-ca064e11da00.png)
 #### Тест 2
-![image](https://user-images.githubusercontent.com/53860694/196975411-c1ab8c3d-7676-466e-9241-f684636bad8a.png)
+![image](https://user-images.githubusercontent.com/53860694/197186186-124e81bd-0c9a-4411-88e8-63bb75756fd6.png)
+
