@@ -20,38 +20,41 @@ crit_name_list_copy = crit_name_list
 a = np.eye(criterion_amount)
 
 # Запрос критериев и рассчет обратных значений
-for i in range(len(crit_name_list)):
-    for m in range(len(crit_name_list_copy)):
-        if i >= m:
-            continue
-        else:
-            while True:
-                crit = float(input('Введите криетерий попарного сравнения {}/{}: '.format(crit_name_list[i], crit_name_list[m])))
-                if crit < 0:
-                    print('Введите корректное значение!')
-                    continue
-                else:
-                    break
-            a[i, m] = round(crit, 2)
-            a[m, i] = round(1 / crit, 2)
+while True:
+    for i in range(len(crit_name_list)):
+        for m in range(len(crit_name_list_copy)):
+            if i >= m:
+                continue
+            else:
+                while True:
+                    crit = float(input('Введите криетерий попарного сравнения {}/{}: '.format(crit_name_list[i], crit_name_list[m])))
+                    if crit < 0:
+                        print('Введите корректное значение!')
+                        continue
+                    else:
+                        break
+                a[i, m] = round(crit, 2)
+                a[m, i] = round(1 / crit, 2)
 
-lamd = []
+    lamd = []
 
-degr_crit = 1 / criterion_amount 
-for i in range(criterion_amount):
-    lamd.append(round(functools.reduce(lambda a, b : a * b, a[i]) ** degr_crit, 2))
+    degr_crit = 1 / criterion_amount 
+    for i in range(criterion_amount):
+        lamd.append(round(functools.reduce(lambda a, b : a * b, a[i]) ** degr_crit, 2))
 
-s_lamd = sum(lamd)
-correct_kf = []
-kf = {}
-for i in range(len(lamd)):
-    kf[crit_name_list[i]] = round(lamd[i] / s_lamd, 2)
-    correct_kf.append(round(lamd[i] / s_lamd, 2))
+    s_lamd = sum(lamd)
+    correct_kf = []
+    kf = {}
+    for i in range(len(lamd)):
+        kf[crit_name_list[i]] = round(lamd[i] / s_lamd, 2)
+        correct_kf.append(round(lamd[i] / s_lamd, 2))
 
-# Проверка на сумму весовых кф с последующим выводом
-if sum(correct_kf) == 1:
-    print('Введенные значения корректны')
-    for i in kf:
-        print(i + ':', str(kf[i]))
-else:
-    print('Сумма весовых коэфицентов не равна единице, значит вы ввели некорректные значеня, перезапустите программу и попробуйте еще раз')
+    # Проверка на сумму весовых кф с последующим выводом
+    if sum(correct_kf) == 1:
+        print('Введенные значения корректны')
+        for i in kf:
+            print(i + ':', str(kf[i]))
+    else:
+        print('Сумма весовых коэфицентов не равна единице, введите критерии попарного сравнения заного')
+        continue
+    break
