@@ -51,10 +51,13 @@ while True:
 
     # Проверка на сумму весовых кф с последующим выводом
     if sum(correct_kf) == 1:
-        print('Введенные значения корректны')
         for i in kf:
             print(i + ':', str(kf[i]))
     else:
-        print('Сумма весовых коэфицентов не равна единице, введите критерии попарного сравнения заного')
-        continue
+        final_dict = [max(kf.items(), key=lambda k_v: k_v[1])][0][0]
+        u = 1 - sum(correct_kf)
+        kf[final_dict] += u
+        for i in kf:
+            print(i + ':', str(kf[i]))
+        print(sum(correct_kf))
     break
